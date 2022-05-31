@@ -1,24 +1,23 @@
 
-import connectDB from '../backend/db.js'
-import users from '../backend/routes/users.js'
-import express from 'express'
-import dotenv  from 'dotenv'
-import bodyparser from 'body-parser'
-import mongoose from 'mongoose'
+require('../backend/db.js')
+const users =  require( '../backend/routes/users.js')
+const express =  require( 'express')  
+require( 'dotenv')
+const bodyparser = require( 'body-parser')
+const mongoose = require( 'mongoose')
 
 //connect database
-connectDB()
+// connectDB()
 
 //dotenv config
 
-dotenv.config()
 
 const app = express()
 
-mongoose
-  .connect(process.env.DB, { useNewUrlParser: true })
-  .then(() => console.log(`Database connected successfully`))
-  .catch((err) => console.log(err));
+// mongoose
+//   .connect(process.env.DB, { useNewUrlParser: true })
+//   .then(() => console.log(`Database connected successfully`))
+//   .catch((err) => console.log(err));
 //Creating API for user
 mongoose.Promise = global.Promise;
 
