@@ -1,50 +1,52 @@
-import mongoose from 'mongoose'
+const mongoose =  require('mongoose')
 
 const userSchema = mongoose.Schema({
     fullName: {
         type: String,
-        required:true,
+        required: true,   
     },
-    age:{
-        type: Number,
-        required:true,
+    Age:{
+        type: Number,   
     },
     mobile: {
         type: String,
         required: true,
+        unique: true,   
     },
     email: {
-        type: String,
-        required: true,
-        unique:true
+        type: String, 
     },
     gym: {
-        type: Boolean,
-        defualt: false
+        type: String,
+        default: true,  
     },
     aerobics: {
-        type: Boolean,
-        defualt: false
+        type: String,
+        default: false
     },
     sauna: {
-        type: Boolean,
-        defualt: false
+        type: String,
+        default: false
     },
 gender:{
-    type:String,
-    possibleValues: ['male' , 'female']
+   Male: {type:Boolean},
+   Female: {type: Boolean},
 },
+
 duration:{
-    type:String,
-    possibleValues: ['1 month', '3 months', '6 months', '1 year']
+   oneMonth:{type:Boolean},
+   threeMonths:{type:Boolean},
+   sixMonths:{type:Boolean},
+   oneYear:{type:Boolean},
+
 },
 
 }, {
-    timestamps: true
+collection:'max'
 });
 
 
 
-const User = mongoose.model('User', userSchema)
+const User = mongoose.model('model', userSchema)
 
-export default User
+module.exports = User
