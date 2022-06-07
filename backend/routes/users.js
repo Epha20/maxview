@@ -81,23 +81,8 @@ router.route('/create-member').post((req, res, next) => {
     if (error) {
       return next(error)
     } else {
-      const newuser = new model({
-        fullName: req.body.fullName,
-        age: req.body.age,
-        mobile: req.body.mobile,
-        email: req.body.email,
-        gym: req.body.gym,
-        aerobics: req.body.aerobics,
-        sauna: req.body.sauna,
-        gender: req.body.gender,
-        duration: req.body.duration,
-      })
-      try {
-         const user = newuser.save()
-        res.send(user)
-      } catch (e) {
-        res.send(e)
-      }
+      console.log(data)
+      res.json(data)
     }
   })
 })
@@ -135,7 +120,7 @@ router.route('/update-member/:id').put((req, res, next) => {
 })
 
 // Delete Student
-router.route('/delete-student/:id').delete((req, res, next) => {
+router.route('/delete-member/:id').delete((req, res, next) => {
   model.findByIdAndRemove(req.params.id, (error, data) => {
     if (error) {
       return next(error)

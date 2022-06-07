@@ -3,22 +3,29 @@ const mongoose =  require('mongoose')
 const userSchema = mongoose.Schema({
     fullName: {
         type: String,
-        required: true,   
+        
     },
     Age:{
         type: Number,   
     },
     mobile: {
         type: String,
-        required: true,
-        unique: true,   
+        
+        
     },
     email: {
-        type: String, 
-    },
+        type: String,
+        required: true,
+        trim: true,
+        validate(value) {
+          if (!value.match(/^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/)) {
+            throw new Error('Email is not valid.');
+          }
+        }
+      },
     gym: {
         type: String,
-        default: true,  
+        default: false,  
     },
     aerobics: {
         type: String,
